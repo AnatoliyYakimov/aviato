@@ -1,0 +1,28 @@
+<table mat-table [dataSource]="bookings" class="w-100 overflow-hidden">
+  <ng-container matColumnDef="route">
+    <th mat-header-cell *matHeaderCellDef>Маршрут</th>
+    <td mat-cell *matCellDef="let row"> {{row.flightDto.routeDto | RouteName}} </td>
+  </ng-container>
+  <ng-container matColumnDef="airplane">
+    <th mat-header-cell *matHeaderCellDef>Модель самолёта</th>
+    <td mat-cell *matCellDef="let row"> {{row.flightDto.airplaneModelName}} </td>
+  </ng-container>
+  <ng-container matColumnDef="scheduledDepartureTime">
+    <th mat-header-cell *matHeaderCellDef> Время отправления</th>
+    <td mat-cell *matCellDef="let row"> {{row.flightDto.scheduledDepartureTime | dateTime}} </td>
+  </ng-container>
+  <ng-container matColumnDef="scheduledArrivalTime">
+    <th mat-header-cell *matHeaderCellDef> Время прибытия</th>
+    <td mat-cell *matCellDef="let row"> {{row.flightDto.scheduledArrivalTime | dateTime}} </td>
+  </ng-container>
+  <ng-container matColumnDef="seatTypeName">
+    <th mat-header-cell *matHeaderCellDef>Тип места</th>
+    <td mat-cell *matCellDef="let row">{{row.seatTypeName}}</td>
+  </ng-container>
+  <ng-container matColumnDef="seatNumber">
+    <th mat-header-cell *matHeaderCellDef>Номер места</th>
+    <td mat-cell *matCellDef="let row">{{row.seatNumber}}</td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

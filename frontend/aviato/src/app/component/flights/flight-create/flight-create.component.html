@@ -1,0 +1,42 @@
+<mat-card style="min-width: 700px">
+  <mat-card-title>
+    Новый рейс
+  </mat-card-title>
+  <mat-card-content *ngIf="routes">
+    <div class="mt-2">
+      <form class="d-flex flex-column justify-content-around" [formGroup]="form">
+        <mat-form-field>
+          <mat-label>Маршрут:</mat-label>
+          <mat-select formControlName="routeId">
+            <ng-container *ngFor="let route of routes">
+              <mat-option [value]="route.routeId">{{route | RouteName}}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Номер места:</mat-label>
+          <input matInput [ngxMatDatetimePicker]="scheduledDepartureTime" formControlName="scheduledDepartureTime"/>
+          <mat-datepicker-toggle [for]="scheduledDepartureTime" matSuffix></mat-datepicker-toggle>
+          <ngx-mat-datetime-picker #scheduledDepartureTime [enableMeridian]="false"></ngx-mat-datetime-picker>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Номер места:</mat-label>
+          <input matInput formControlName="scheduledArrivalTime" [ngxMatDatetimePicker]="scheduledArrivalTime"/>
+          <mat-datepicker-toggle [for]="scheduledArrivalTime" matSuffix></mat-datepicker-toggle>
+          <ngx-mat-datetime-picker #scheduledArrivalTime [enableMeridian]="false"></ngx-mat-datetime-picker>
+        </mat-form-field>
+      </form>
+      <div>
+        <div class="d-flex flex-row justify-content-center">
+          <button mat-flat-button color="accent" class="mr-2" (click)="cancel.emit()">
+            Отмена
+          </button>
+          <button mat-flat-button color="accent" (click)="submit.emit(form.value)"
+                  [disabled]="(form.statusChanges | async) != 'VALID'">
+            Сохранить
+          </button>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

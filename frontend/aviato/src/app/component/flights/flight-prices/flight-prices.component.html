@@ -1,0 +1,15 @@
+<ng-container *ngIf="($seatsInfo | async) as seatsInfos">
+  <ng-container *ngFor="let seatsInfo of seatsInfos | keyvalue ">
+    <div class="d-flex flex-column">
+      <ng-container *ngIf="seatsInfo != null">
+        <div class="d-flex flex-row justify-content-between pl-2 pr-2">
+          <div class="m-1">{{seatsInfo.value.typeName}}:</div>
+          <div class="m-1">{{seatsInfo.value.freeSeatsCount}}
+            из {{seatsInfo.value.totalSeatsCount}}</div>
+          <div class="badge-light rounded p-1">${{seatsInfo.value.price}}</div>
+        </div>
+        <mat-divider inset vertical></mat-divider>
+      </ng-container>
+    </div>
+  </ng-container>
+</ng-container>

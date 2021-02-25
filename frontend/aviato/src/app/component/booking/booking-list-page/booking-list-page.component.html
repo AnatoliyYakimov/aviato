@@ -1,0 +1,11 @@
+<mat-card style="min-width: 1200px">
+  <mat-card-title class="text-center">
+    Мои бронирования
+  </mat-card-title>
+  <mat-card-content>
+    <app-booking-list
+      [bookings]="$bookings | async">
+    </app-booking-list>
+  </mat-card-content>
+</mat-card>
+

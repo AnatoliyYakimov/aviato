@@ -1,0 +1,10 @@
+<div>
+  <app-booking-create
+    [flight]="$flight | async"
+    [person]="$person | async"
+    [flightSeats]="$flightSeats | async"
+    (submit)="createBooking($event)"
+    (cancel)="cancel()"
+  >
+  </app-booking-create>
+</div>

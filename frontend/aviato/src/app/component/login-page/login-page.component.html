@@ -1,0 +1,29 @@
+<div class="d-flex justify-content-center align-items-center">
+  <mat-card style="min-width: 400px; margin-top: 100px" class="shadow">
+    <mat-card-title class="justify-content-center"><h2 class="text-center">Авторизация</h2>
+    </mat-card-title>
+    <mat-card-content>
+      <mat-error
+        *ngIf="errorActive | async"
+        class="mb-2 d-flex flex-column align-items-center">
+        Неверный логин или пароль
+      </mat-error>
+      <form class="d-flex flex-column" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+          <mat-label>Логин</mat-label>
+          <input matInput required formControlName="username"/>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Пароль</mat-label>
+          <input matInput required type="password" formControlName="password"/>
+        </mat-form-field>
+        <div class="d-flex flex-column align-items-center justify-content-center">
+
+          <button mat-flat-button color="accent" type="submit" [disabled]="(form.statusChanges | async) != 'VALID'">
+            Войти
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
