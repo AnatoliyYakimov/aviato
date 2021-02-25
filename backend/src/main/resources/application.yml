@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/aviato
+    username: aviato_app
+    password: example
+logging:
+  level:
+    org:
+      springframework:
+        jdbc:
+          core: DEBUG

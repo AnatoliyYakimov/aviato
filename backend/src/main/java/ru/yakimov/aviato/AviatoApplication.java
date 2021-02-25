@@ -2,12 +2,19 @@ package ru.yakimov.aviato;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
-public class AviatoApplication {
+public class AviatoApplication implements WebMvcConfigurer {
 
-	public static void main(String[] args) {
-		SpringApplication.run(AviatoApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(AviatoApplication.class, args);
+    }
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**");
+    }
 
 }
